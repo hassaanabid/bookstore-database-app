@@ -1,4 +1,12 @@
-
+/**
+ *  Name: Hassaan Abid
+ *  ID: 214243935
+ *  EECS Account: ha104
+ *  Part B - Database Application
+ *  File: YRBQueries.java
+ *
+ *  Class YRBQueries - contains all the queries that YRB app may need to execute.
+ */
 public final class YRBQueries {
 
     public static final String GET_CUSTOMER_INFO = "SELECT cid, name, city FROM yrb_customer WHERE cid = ?";
@@ -13,18 +21,18 @@ public final class YRBQueries {
      * Note: The query will still return more than one books with same title but different year, as required.
      */
     public static final String FIND_PURCHASEABLE_BOOKS =
-        "SELECT DISTINCT B.title, B.year, B.language, B.cat, B.weight \n" +
-                "FROM (yrb_book B join yrb_offer O \n" +
-                "on O.title = B.title and O.year = B.year) \n" +
-                "join yrb_member M on M.club = O.club \n" +
-                "where M.cid = ? and B.cat = ? and B.title = ? \n";
+            "SELECT DISTINCT B.title, B.year, B.language, B.cat, B.weight \n" +
+                    "FROM (yrb_book B join yrb_offer O \n" +
+                    "on O.title = B.title and O.year = B.year) \n" +
+                    "join yrb_member M on M.club = O.club \n" +
+                    "where M.cid = ? and B.cat = ? and B.title = ? \n";
 
     /**
      * Finds the club offering the minimum price that a customer is member of.
      * EDGE CASE: There could be ties on minimum price.
-     *            Example: Customer is a member of multiple clubs AND more than one of those clubs are offering the book
-     *            at minimum price. Solution here is to just limit the result set to 1 since all such satisfy the
-     *            price requirement.
+     * Example: Customer is a member of multiple clubs AND more than one of those clubs are offering the book
+     * at minimum price. Solution here is to just limit the result set to 1 since all such satisfy the
+     * price requirement.
      * Note: Orderby is processed before Limit in SQL
      */
     public static final String FIND_CLUB_OFFERING_MIN_PRICE =

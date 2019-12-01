@@ -1,0 +1,38 @@
+
+================================================================================================
+
+red 334 % db2 "insert into yrb_customer values (46, 'Joe Jackson', 'Cali')"
+ 
+ 
+DB20000I  The SQL command completed successfully.
+================================================================================================
+
+red 335 % db2 "select * from yrb_customer"
+ 
+ 
+
+CID    NAME                 CITY           
+------ -------------------- ---------------
+     1 Tracy Turnip         Richmond       
+     2 Qfwfq_new            Pluto_new      
+
+...[truncated to save on printing]
+
+    45 Jack Daniels         Charlottesville
+    46 Joe Jackson          Cali           
+
+  46 record(s) selected.
+
+================================================================================================
+
+red 336 % db2 "select * from new_member where cid = 46"
+ 
+ 
+
+CLUB            CID   
+--------------- ------
+Basic               46
+
+  1 record(s) selected.
+
+================================================================================================

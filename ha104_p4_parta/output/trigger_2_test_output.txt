@@ -1,0 +1,63 @@
+
+================================================================================================
+
+red 347 % db2 "select * from new_member"
+ 
+ 
+
+CLUB            CID   
+--------------- ------
+AAA                  2
+AAA                  3
+AAA                  6
+AAA                  8
+AAA                  9
+AAA                 12
+AAA                 16
+AAA                 19
+AAA                 21
+AAA                 26
+AAA                 27
+AAA                 29
+AAA                 32
+AAA                 34
+AAA                 37
+AAA                 39
+AAA                 41
+AAA                 44
+AARP                 3
+AARP                 5
+AARP                10
+...[truncated to save on printing]
+
+================================================================================================
+
+red 352 % db2 "insert into new_purchase values \                                                                    (2, 'AAA', 'Richmond Underground','1997', '2019-11-29-04.55.46.656000', 2)"
+ (2, 'AAA', 'Richmond Underground','1997', '2019-11-29-04.55.46.656000', 2)"
+ 
+DB20000I  The SQL command completed successfully.
+
+================================================================================================
+
+red 353 % db2 "insert into new_purchase values \                                                                    (1, 'AAA', 'Richmond Underground','1997', '2019-11-29-04.55.46.656000', 2)"
+ (1, 'AAA', 'Richmond Underground','1997', '2019-11-29-04.55.46.656000', 2)"
+ 
+DB21034E  The command was processed as an SQL statement because it was not a 
+valid Command Line Processor command.  During SQL processing it returned:
+SQL0438N  Application raised error or warning with diagnostic text: "Error: 
+Purchase is invalid since customer is not a member".  SQLSTATE=80000
+red 354 % db2 "select * from new_purchase where cid = 1"
+
+================================================================================================
+
+CID    CLUB            TITLE                     YEAR   WHEN                       QNTY  
+------ --------------- ------------------------- ------ -------------------------- ------
+     1 Basic           Will Snoopy find Lucy?      1985 2001-12-01-11.59.00.000000      1
+     1 Readers Digest  Flibber Gibber              2000 2001-12-01-11.59.00.000000      1
+     1 Readers Digest  Getting into Snork U.       2000 2001-12-01-11.59.00.000000      1
+     1 Readers Digest  Yon-juu Hachi               1948 1999-04-20-12.12.00.000000      1
+     1 W&M Club        Nothing but Steak           1991 2001-12-01-11.59.00.000000      1
+
+  5 record(s) selected.
+
+================================================================================================
